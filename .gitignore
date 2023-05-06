@@ -1,5 +1,10 @@
 # Visual Studio Code Stuff
 .vscode/
-*.sln
 .vs/
 *.code-workspace
+
+#VS binary and object files
+.src/bin/
+.src/obj/
+
+#VS Stuff
