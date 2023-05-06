@@ -1,0 +1,5 @@
+# Visual Studio Code Stuff
+.vscode/
+*.sln
+.vs/
+*.code-workspace
