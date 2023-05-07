@@ -1,10 +1,12 @@
 # Visual Studio Code Stuff
 .vscode/
-.vs/
 *.code-workspace
 
-#VS binary and object files
-.src/bin/
-.src/obj/
-
 #VS Stuff
+.vs/
+
+#VS binary and object files
+src/bin/
+src/obj/
+
+UpgradeLog.htm
