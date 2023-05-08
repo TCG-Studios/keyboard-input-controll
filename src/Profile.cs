@@ -8,6 +8,6 @@ namespace kic
 {
     public class Profile
     {
-        
+        List<>
     }
 }
