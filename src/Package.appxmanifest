@@ -14,8 +14,8 @@
   <mp:PhoneIdentity PhoneProductId="5ee9d640-be47-4a6c-b1f1-92ca2fee195e" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>AppT</DisplayName>
-    <PublisherDisplayName>styz</PublisherDisplayName>
+    <DisplayName>kic</DisplayName>
+    <PublisherDisplayName>Markofie</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -30,15 +30,17 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="AppT.App">
+      EntryPoint="KIC.App">
       <uap:VisualElements
-        DisplayName="AppT"
+        DisplayName="KIC"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="AppT"
+        Description="keyboard-input-controll"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape"/></uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>

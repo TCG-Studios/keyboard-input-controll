@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Threading;
 
 // Die Elementvorlage "Leere Seite" wird unter https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x407 dokumentiert.
 
@@ -22,9 +23,20 @@ namespace kic
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        
         public MainPage()
         {
             this.InitializeComponent();
+            // Define a dictionary with some sample key-value pairs
+            var myDictionary = new Dictionary<string, string>
+            {
+                { "Key1", "Value1" },
+                { "Key2", "Value2" },
+                { "Key3", "Value3" }
+            };
+            
+            // Set the dictionary as the DataContext for the Page
+            DataContext = new { MyDictionary = myDictionary };
         }
     }
 }
