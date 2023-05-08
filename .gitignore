@@ -9,4 +9,7 @@
 src/bin/
 src/obj/
 
+#Idea shit
+.idea/
+
 UpgradeLog.htm
