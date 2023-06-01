@@ -13,3 +13,6 @@ src/obj/
 .idea/
 
 UpgradeLog.htm
+
+#Current Local
+kic/output/

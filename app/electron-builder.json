@@ -1,0 +1,22 @@
+{
+    "appId": "com.example.my-electron-app",
+    "_comment": " TODO VV Change app Name",
+    "productName": "My Electron App", 
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+  
