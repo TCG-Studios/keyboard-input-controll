@@ -1,6 +1,5 @@
 {
-    "appId": "com.example.my-electron-app",
-    "_comment": " TODO VV Change app Name",
+    "appId": "de.tcg.kic-app",
     "productName": "My Electron App", 
     "directories": {
       "output": "dist"
@@ -18,5 +17,4 @@
     "linux": {
       "target": "AppImage"
     }
-  }
-  
+}

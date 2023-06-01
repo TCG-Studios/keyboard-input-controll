@@ -11,6 +11,7 @@ function createWindow() {
     }
   });
 
+  //Path to build Angular index.html
   mainWindow.loadURL(`file://${__dirname}/dist/index.html`);
 
   mainWindow.on('closed', function() {

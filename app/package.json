@@ -1,14 +1,15 @@
 {
   "name": "app",
   "version": "0.0.0",
+  "author": "TechCrafterGaming",
+  "description": "This is the Gui for the KIC project.",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "ng:run": "ng serve",
+    "ng:build": "ng build",
+    "ng:watch": "ng build --watch --configuration development",
+    "ng:test": "ng test",
     "electron": "electron .",
-    "electron:build": "npm run build && electron-builder"
+    "electron:build": "npm run ng:build && electron-builder"
   },
   "private": true,
   "dependencies": {
@@ -25,12 +26,13 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.1.2",
-    "@angular/cli": "~13.1.2",
+    "@angular-devkit/build-angular": "^13.3.11",
+    "@angular/cli": "^16.0.4",
     "@angular/compiler-cli": "~13.1.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
-    "electron-builder": "^23.6.0",
+    "electron": "^25.0.1",
+    "electron-builder": "^24.4.0",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
