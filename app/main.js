@@ -7,12 +7,13 @@ function createWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      webSecurity: false // Deaktiviert die CORS-Beschränkungen
     }
   });
 
   //Path to build Angular index.html
-  mainWindow.loadURL(`file://${__dirname}/dist/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/dist/app/index.html`);
 
   mainWindow.on('closed', function() {
     mainWindow = null;
@@ -32,3 +33,4 @@ app.on('activate', function() {
     createWindow();
   }
 });
+

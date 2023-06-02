@@ -16,5 +16,8 @@
     },
     "linux": {
       "target": "AppImage"
+    },
+    "extraMetadata": {
+      "main": "main.js"
     }
 }
