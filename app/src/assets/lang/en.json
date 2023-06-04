@@ -15,6 +15,10 @@
   "pages":{
       "home":{
           "text":"text"
+      },
+      "error":{
+        "source":"Error Source",
+        "details":"Show Details"
       }
   },
   "HTTPSerror": {
@@ -280,4 +284,3 @@
     }
   }
 }
-  

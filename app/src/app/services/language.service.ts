@@ -46,13 +46,38 @@ export class LanguageService {
     }
   }
 
-  public getTranslation(key: string): string {
+  public getTranslation(path: string): string {
     const translation = this.translations[this.language];
-    if (translation && translation[key]) {
-      return translation[key];
+  
+    if (translation) {
+      // Split the key into nested keys if there are dots present
+      const nestedKeys = path.split('.');
+      let nestedTranslation = translation;
+  
+      for (const nestedKey of nestedKeys) {
+        // Check if the nested translation for the current key exists
+        if (nestedTranslation && nestedTranslation[nestedKey]) {
+          nestedTranslation = nestedTranslation[nestedKey];
+        } else {
+          // Return the original key if any nested translation is missing
+          return path;
+        }
+      }
+      // Return the final nested translation
+      return nestedTranslation;
     }
-    return key;
+    // Return the original key if translation is missing for the selected language
+    return path;
   }
+  
+  //! Not for nested obj
+  // public getTranslation(key: string): string {
+  //   const translation = this.translations[this.language];
+  //   if (translation && translation[key]) {
+  //     return translation[key];
+  //   }
+  //   return key;
+  // }
   // Alias für getTranslation
   public get(key: string): string {
     return this.getTranslation(key);
