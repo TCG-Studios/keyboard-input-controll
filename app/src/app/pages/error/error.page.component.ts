@@ -6,22 +6,22 @@ import { LanguageService } from 'src/app/services/language.service';
 
 
 @Component({
-  selector: 'error.page.component',
-  templateUrl: './error.page.component.html',
-  styleUrls: ['./error.page.component.less'],
-    host: { class: 'error.page.component' }
+  selector    : 'error-page-component',
+  templateUrl : './error.page.component.html',    // TODO turn it in to ng Materials >> make it pretty 
+  styleUrls   : ['./error.page.component.less'],
+  host        : { class: 'error-page-component' }
 })
 export class ErrorPageComponent{
-  protected errorCode           : string = "404"
-  protected error               : IError = {name: "", description:""};
-  protected hasErrorDescription : boolean = true;
-  protected showDetails         : boolean = false;
-  protected source              : string | boolean = false;
+  public errorCode           : string = "404"
+  public error               : IError = {name: "Error", description:"Error"};
+  public hasErrorDescription : boolean = true;
+  public showDetails         : boolean = false;
+  public source              : string | boolean = false;
 
   constructor(
     public router          : Router,
     private activatedRoute : ActivatedRoute,
-    protected lang         : LanguageService,
+    public lang            : LanguageService,
   ){
     // console.log(activatedRoute.snapshot.queryParamMap.get("code"))
     activatedRoute.queryParams.subscribe(queryParms => {

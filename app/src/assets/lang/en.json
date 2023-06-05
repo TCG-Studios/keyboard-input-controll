@@ -18,7 +18,8 @@
       },
       "error":{
         "source":"Error Source",
-        "details":"Show Details"
+        "details":"Show Details",
+        "back":"Back to Homepage"
       }
   },
   "HTTPSerror": {

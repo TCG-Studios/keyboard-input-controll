@@ -30,7 +30,8 @@ export class LanguageService {
     //! Annahme: Die JSON-Dateien sind im geforderten Ordner und haben entsprechende Namen
     supportedLanguages.forEach(lang => {
       // Laden der Übersetzungsdatei
-      const translation = require(`../assets/lang/${lang}.json`);
+      const translation = require(`src/assets/lang/${lang}.json`);
+      //import translation from 'src/assets/lang/${lang}.json';
       this.translations[lang] = translation;
     });
   }

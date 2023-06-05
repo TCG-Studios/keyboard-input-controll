@@ -1,24 +1,24 @@
 <div>
   <div>
     <p class="big">Ooops!</p>
-    <h1 class="g_error">ERROR {{this.errorCode}}</h1>
+    <h1 class="g_error">ERROR {{errorCode}}</h1>
     <h2>{{error.name}}</h2>
-    <ng-container *ngIf=hasErrorDescription>
+    <ng-container *ngIf="hasErrorDescription">
       <p>{{error.description}}</p>
     </ng-container>
     <br>
-    <ng-container *ngIf=source>
-      <p class="button" (click)=details()>{{this.lang.get("pages.error.details")}}</p>
+    <ng-container *ngIf="source">
+      <p class="button" (click)=details()>{{lang.get("pages.error.details")}}</p>
       <br>
+      <ng-container *ngIf="showDetails">
+        <ng-container *ngIf="source">
+          <div>
+            <p>{{lang.get("pages.error.source")}}</p>
+            <p>{{source}}</p>
+          </div>
+        </ng-container>
+      </ng-container>
     </ng-container>
-    <a class="g_link" href="#" (click)="navigate($event, 'home')">{{this.lang.get("pages.error.back")}}</a>
+    <a class="g_link" href="#" (click)="navigate($event, 'home')">{{lang.get("pages.error.back")}}</a>
   </div>
-  <ng-container *ngIf=showDetails>
-    <ng-container *ngIf=source>
-      <div>
-        <p>{{this.lang.get("pages.error.source")}}</p>
-        <p>{{source}}</p>
-      </div>
-    </ng-container>
-  </ng-container>
 </div>
