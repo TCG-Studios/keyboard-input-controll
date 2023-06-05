@@ -7,8 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 /* Service */
-import { LanguageService } from './services/language.service';
-// import { ThemeService } from './services/theme.service';
+// // import { LanguageService } from './services/language.service';
+// // import { ThemeService } from './services/theme.service';
 
 /* Page Components */
 import { HomePageComponent } from './pages/home/home.page.component';
@@ -35,8 +35,8 @@ import { ErrorPageComponent } from './pages/error/error.page.component';
     ErrorPageComponent,
   ],
   providers: [
-    LanguageService,
-    //ThemeService,
+    //* LanguageService,    << provided in root
+    //* ThemeService,       << provided in root
   ],
   bootstrap: [AppComponent]
 })

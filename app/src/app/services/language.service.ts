@@ -4,7 +4,9 @@ import { Observable } from 'rxjs/internal/Observable';
 
 import { supportedLanguages, ILanguages, defaultLanguage } from '../models/supportedLanguages.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LanguageService {
   protected activeLanguageSubject : BehaviorSubject<string>;
   public languageChanged = new EventEmitter<void>();
