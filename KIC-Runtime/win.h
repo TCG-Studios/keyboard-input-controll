@@ -48,7 +48,7 @@ int DebugBox(const char* msg, HWND window = NULL)
 		0);
 }
 int DebugBox(const std::string& msg, HWND window = NULL)
-{ return DebugBox(msg,window); }
+{ return DebugBox(msg.c_str(),window); }
 
 
 // Error Boxes
@@ -62,7 +62,7 @@ int ErrorBox(const char* msg, HWND wnd = NULL)
 		0);
 }
 int ErrorBox(const std::string& msg, HWND wnd = NULL)
-{ return ErrorBox(msg, wnd); }
+{ return ErrorBox(msg.c_str(), wnd); }
 
 
 // Fatal Boxes
@@ -77,9 +77,7 @@ void FatalBox(const char* msg, HWND wnd = NULL)
 	PostQuitMessage((uint32_t)GetLastError());
 }
 void FatalBox(const std::string& msg, HWND wnd = NULL) 
-{ FatalBox(msg, wnd); }
+{ FatalBox(msg.c_str(), wnd); }
 
 
 #endif // winBoxes
-
-#include "configs.h"

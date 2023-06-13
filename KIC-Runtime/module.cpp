@@ -41,11 +41,11 @@ bool Module::reloadLibrary()
 }
 
 template <typename T>
-T Module::getFunction(const char* functionName)
+fncptr<T> Module::getFunction(const char* functionName)
 {
 	assert(isLoaded() && "Module not loaded.");
 
-	T function = reinterpret_cast<T>(GetProcAddress(h_Module, functionName));
+	fncptr<T> function = reinterpret_cast<fncptr<T>>(GetProcAddress(h_Module, functionName));
 	if (function == nullptr)
 	{
 		// Error occurred while retrieving the function

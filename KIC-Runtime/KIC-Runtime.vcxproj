@@ -19,14 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="configs.cpp" />
+    <ClCompile Include="hotkey.cpp" />
+    <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="module.cpp" />
+    <ClCompile Include="profile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="configs.h" />
+    <ClInclude Include="hotkey.h" />
     <ClInclude Include="ini.h" />
+    <ClInclude Include="keyboard.h" />
     <ClInclude Include="module.h" />
     <ClInclude Include="parser_base.h" />
+    <ClInclude Include="profile.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="win.h" />
   </ItemGroup>
@@ -138,6 +145,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>

@@ -8,7 +8,11 @@
 
 namespace fs = std::filesystem;
 
+template <typename T>
+using fncptr = void(__stdcall*)(T*);
+
 namespace modules {
+	
 	const enum class Flag : uint8_t
 	{
 		None = 0,
@@ -62,7 +66,7 @@ namespace modules {
 
 class Module
 {
-	/***** (Con/De)-structor *****/
+	/***** Con-/Destructor *****/
 public:
 	Module(const std::string& libPath, const std::string& alias = "")
 		: s_libPath(libPath), s_alias(alias)
@@ -84,7 +88,7 @@ public:
 	bool reloadLibrary();
 
 	template <typename T>
-	T getFunction(const char* functionName);
+	fncptr<T> getFunction(const char* functionName);
 
 	std::string getAlias() const { return s_alias; }
 
@@ -100,6 +104,8 @@ public:
 	bool requiresCleanup() const
 	{ return modules::hasFlag(m_flag, modules::Flag::NeedsCleanup); }
 
+	const std::string& getPath() const 
+	{ return s_libPath; }
 private:
 
 protected:
@@ -116,3 +122,30 @@ protected:
 	std::string s_alias; // Alias of the library
 
 };
+
+namespace modules {
+	std::vector<Module*> selectedModules;
+	void LoadAllSelectedModules() {
+		for (const auto sm : selectedModules)
+		{
+			if (!sm->isLoaded())
+				sm->loadLibrary();
+		}
+	}
+	void freeAllSelectedModules() {
+		for (const auto sm : selectedModules)
+		{
+			if (sm->isLoaded())
+				sm->freeLibrary();
+		}
+	}
+	void initAllSelectedModules() {
+		for (const auto sm : selectedModules)
+		{
+			if (sm->isLoaded())
+			{
+				auto initFnc = sm->getFunction<int>("ModuleInit");
+			}
+		}
+	}
+}
