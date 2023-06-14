@@ -6,8 +6,10 @@
 .vs/
 
 #VS binary and object files
-src/bin/
-src/obj/
+x64/
+Win32/
+CMD/
+obj/
 
 #Idea shit
 .idea/

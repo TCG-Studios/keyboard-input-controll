@@ -1,8 +1,11 @@
-#include "win.h"
+#include "debug.h"
+
+#include "types.h"
 #include "module.h"
 #include "hotkey.h"
 #include "ini.h"
 #include "configs.h"
+#include "WindowBoxes.h"
 
 
 /*
@@ -61,7 +64,7 @@ bool Configurations::loadConfigs(std::string origin) {
 			ifDebug(
 				conOut("Error!\n" + (std::string)e.what());
 			)
-				ErrorBox("Error While Loading Config: " + CONFIGS[i] + "!\n" + (std::string)e.what() + "\n\nContinuing with default configuration...");
+				ErrorBox(("Error While Loading Config: " + CONFIGS[i] + "!\n" + (std::string)e.what() + "\n\nContinuing with default configuration...").c_str());
 			// TODO: hard code standard configs if they don't exist
 		}
 	}

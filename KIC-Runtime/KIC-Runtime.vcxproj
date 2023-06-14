@@ -25,17 +25,21 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="module.cpp" />
     <ClCompile Include="profile.cpp" />
+    <ClCompile Include="WindowsBoxes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="configs.h" />
     <ClInclude Include="hotkey.h" />
     <ClInclude Include="ini.h" />
+    <ClInclude Include="iWin.h" />
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="module.h" />
     <ClInclude Include="parser_base.h" />
     <ClInclude Include="profile.h" />
+    <ClInclude Include="typedefs.h" />
     <ClInclude Include="types.h" />
-    <ClInclude Include="win.h" />
+    <ClInclude Include="debug.h" />
+    <ClInclude Include="WindowBoxes.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -101,6 +105,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(SolutionDir)obj\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "win.h"
+#include "iWin.h"
 #include <functional>
 #include <string>
 #include <filesystem>

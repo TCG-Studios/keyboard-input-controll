@@ -1,6 +1,5 @@
 #include "hotkey.h"
 #include "module.h"
-
 #include "profile.h"
 
 static bool find(const std::string& path, const std::vector<Module*> modds) {

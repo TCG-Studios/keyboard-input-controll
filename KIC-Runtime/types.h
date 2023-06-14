@@ -1,12 +1,11 @@
 #pragma once
 
-#include "win.h"
+#include "iWin.h"
+#include "typedefs.h"
 
-typedef uint16_t uint16; 
-typedef uint8_t uint8;
-
-typedef uint16_t u16;
-typedef uint8_t u8;
+#include <codecvt>
+#include <locale>
+#include <string>
 
 // Function to convert std::string to LPCWSTR
 LPCWSTR StringToLPCWSTR(const char* msg) {
@@ -16,11 +15,11 @@ LPCWSTR StringToLPCWSTR(const char* msg) {
     return wideStr.c_str();
 }
 
-LPCWSTR StringToLPCWSTR(const std::string& msg) {
-	return StringToLPCWSTR(msg);
-}
-
-// types of functions
+/*
+* 
+* types of functions
+* 
+*/
 #include <type_traits>
 #include <string_view>
 #include <vector>
@@ -34,11 +33,11 @@ struct argument_types<Ret(Args...)> {
 };
 
 template <typename T>
-std::vector<std::string_view> get_argument_types() {
+std::vector<std::string_view>* get_argument_types() {
     using ArgsTuple = typename argument_types<T>::types;
-    std::vector<std::string_view> result;
-    std::apply([&result](const auto&... args) {
-        ((result.emplace_back(type_name<decltype(args)>())), ...);
+    auto result = new std::vector<std::string_view>();
+    std::apply([result](const auto&... args) {
+        ((result->emplace_back(type_name<decltype(args)>())), ...);
         }, ArgsTuple{});
     return result;
 }

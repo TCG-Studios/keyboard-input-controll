@@ -1,4 +1,6 @@
+#include "iWin.h"
 #include "module.h"
+#include "WindowBoxes.h"
 
 bool Module::loadLibrary() {
 	if (isLoaded())
@@ -12,7 +14,7 @@ bool Module::loadLibrary() {
 	}
 	
 	// Error occurred while loading the module
-	ifDebug(DebugBox("Failed to load library: " + s_libPath));
+	ifDebug(DebugBox(("Failed to load library: " + s_libPath).c_str()));
 	return false;
 }
 
@@ -29,7 +31,7 @@ bool Module::freeLibrary()
 	}
 
 	// Error occurred while unloading the module
-	ifDebug(DebugBox("Failed to free library: " + s_libPath));
+	ifDebug(DebugBox(("Failed to free library: " + s_libPath).c_str()));
 	return false;
 }
 
@@ -49,7 +51,7 @@ fncptr<T> Module::getFunction(const char* functionName)
 	if (function == nullptr)
 	{
 		// Error occurred while retrieving the function
-		ifDebug(DebugBox("Failed to get function: " + std::string(functionName)));
+		ifDebug(DebugBox(("Failed to get function: " + std::string(functionName)).c_str()));
 	}
 	return function;
 }

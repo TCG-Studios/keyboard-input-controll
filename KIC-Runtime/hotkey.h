@@ -1,4 +1,6 @@
 #pragma once
+#include <array>
+#include "typedefs.h"
 
 class hotkey
 {

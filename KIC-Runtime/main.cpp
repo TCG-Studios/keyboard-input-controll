@@ -11,7 +11,9 @@
 // Debug Includes
 
 // Includes
-#include "win.h"
+#include "iWin.h"
+#include "debug.h"
+#include "WindowBoxes.h"
 
 
 HHOOK keyboardHook;
@@ -22,6 +24,20 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
 	if (nCode == HC_ACTION)
 	{
+		UINT dataSize = 0;
+		GetRawInputData((HRAWINPUT)lParam, RID_INPUT, NULL, &dataSize, sizeof(RAWINPUTHEADER));
+
+		LPBYTE inputData = new BYTE[dataSize];
+		if (GetRawInputData((HRAWINPUT)lParam, RID_INPUT, inputData, &dataSize, sizeof(RAWINPUTHEADER)) == dataSize)
+		{
+			RAWINPUT* rawInput = (RAWINPUT*)inputData;
+			if (rawInput->header.dwType == RIM_TYPEKEYBOARD)
+			{
+				deviceHandle = rawInput->header.hDevice;
+			}
+		}
+
+		delete[] inputData;
 		KBDLLHOOKSTRUCT* keyboardStruct = (KBDLLHOOKSTRUCT*)lParam;
 
 		if (wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN)
