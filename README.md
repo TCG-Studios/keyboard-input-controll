@@ -7,7 +7,6 @@ Gives the user full access to all keyboards and keys to use for there own hotkey
 - Profile loader for each keyboard
 - Getting linker errors done
 - websocket for the UI
-- 
 - module loader 
 
 ## Modules
