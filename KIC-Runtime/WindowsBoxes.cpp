@@ -2,10 +2,10 @@
 #include "WindowBoxes.h"
 
 
-int DebugBox(const char* msg, HWND window)
+int DebugBox(const char* msg, HWND wnd)
 {
 	return MessageBoxW(
-		window,
+		wnd,
 		StringToLPCWSTR(
 			("Debug Error: " + std::to_string(GetLastError()) + "\n" + msg + "\n\n").c_str()),
 		StringToLPCWSTR("Debug"),

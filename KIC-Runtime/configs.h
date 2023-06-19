@@ -45,12 +45,11 @@ namespace Configurations
 		const char* pflExt;
 		std::vector<std::string*> profilePaths;
 	public:
-
+		
 		void loadProfiles();
-
+		
 		void reloadProfiles();
-
+		
 		void freeProfiles();
-
 	};
 }

@@ -1,19 +1,16 @@
-#include "debug.h"
-
-#include "types.h"
-#include "module.h"
-#include "hotkey.h"
+#include "parser_base.h"
 #include "ini.h"
 #include "configs.h"
 #include "WindowBoxes.h"
-
+#include <string>
 
 /*
 * 
 * Profile Manager
 * 
 */
-typedef Configurations::profileManager pflMan;
+using pflMan = Configurations::profileManager;
+namespace fs = std::filesystem;
 
 
 void pflMan::loadProfiles()
@@ -61,9 +58,6 @@ bool Configurations::loadConfigs(std::string origin) {
 			p->validate();
 		}
 		catch (const std::runtime_error& e) {
-			ifDebug(
-				conOut("Error!\n" + (std::string)e.what());
-			)
 				ErrorBox(("Error While Loading Config: " + CONFIGS[i] + "!\n" + (std::string)e.what() + "\n\nContinuing with default configuration...").c_str());
 			// TODO: hard code standard configs if they don't exist
 		}
@@ -74,6 +68,6 @@ bool Configurations::loadConfigs(std::string origin) {
 std::filesystem::path Configurations::getStartUpProfilePath()
 {
 	return static_cast<IniParser*>(pointerFromIndex(configIndex::Profiles))->
-		get<std::string>("StartProfile", "Profile_Path", "");
+		get<std::string>("StartProfile", "Profile_Path", "df_pfl.pfl");
 }
 

@@ -1,6 +1,47 @@
-#include "iWin.h"
-#include "module.h"
 #include "WindowBoxes.h"
+#include "typedefs.h"
+#include "module.h"
+
+
+modules::Flag modules::operator|(modules::Flag lhs, modules::Flag rhs) {
+	return static_cast<modules::Flag>(static_cast<uint8_t>(lhs) | static_cast<uint8_t>(rhs));
+}
+
+modules::Flag modules::operator&(modules::Flag lhs, modules::Flag rhs) {
+	return static_cast<modules::Flag>(static_cast<uint8_t>(lhs) & static_cast<uint8_t>(rhs));
+}
+
+modules::Flag modules::operator^(modules::Flag lhs, modules::Flag rhs) {
+	return static_cast<modules::Flag>(static_cast<uint8_t>(lhs) ^ static_cast<uint8_t>(rhs));
+}
+
+bool modules::operator==(modules::Flag lhs, modules::Flag rhs) {
+	return static_cast<uint8_t>(lhs) == static_cast<uint8_t>(rhs);
+}
+
+bool modules::operator!=(modules::Flag lhs, modules::Flag rhs) {
+	return static_cast<uint8_t>(lhs) != static_cast<uint8_t>(rhs);
+}
+
+modules::Flag modules::operator~(modules::Flag lhs) {
+	return static_cast<modules::Flag>(~static_cast<uint8_t>(lhs));
+}
+
+modules::Flag modules::createFlag(uint8_t value) {
+	return static_cast<modules::Flag>(value);
+}
+
+bool modules::hasFlag(modules::Flag flag, const modules::Flag checkFlag) {
+	return (flag & checkFlag) == checkFlag;
+}
+
+void modules::setFlag(modules::Flag& flag, modules::Flag setFlag) {
+	flag = flag | setFlag;
+}
+
+void modules::clearFlag(modules::Flag& flag, const modules::Flag clearFlag) {
+	flag = flag & ~clearFlag;
+}
 
 bool Module::loadLibrary() {
 	if (isLoaded())
@@ -14,7 +55,6 @@ bool Module::loadLibrary() {
 	}
 	
 	// Error occurred while loading the module
-	ifDebug(DebugBox(("Failed to load library: " + s_libPath).c_str()));
 	return false;
 }
 
@@ -31,7 +71,6 @@ bool Module::freeLibrary()
 	}
 
 	// Error occurred while unloading the module
-	ifDebug(DebugBox(("Failed to free library: " + s_libPath).c_str()));
 	return false;
 }
 
@@ -43,7 +82,7 @@ bool Module::reloadLibrary()
 }
 
 template <typename T>
-fncptr<T> Module::getFunction(const char* functionName)
+std::function<T()> Module::getFunction(const char* functionName)
 {
 	assert(isLoaded() && "Module not loaded.");
 
@@ -51,7 +90,30 @@ fncptr<T> Module::getFunction(const char* functionName)
 	if (function == nullptr)
 	{
 		// Error occurred while retrieving the function
-		ifDebug(DebugBox(("Failed to get function: " + std::string(functionName)).c_str()));
 	}
-	return function;
+	return std::function<T()>(function);
+}
+
+void modules::LoadAllSelectedModules() {
+	for (const auto sm : modules::selectedModules)
+	{
+		if (!sm->isLoaded())
+			sm->loadLibrary();
+	}
+}
+void modules::freeAllSelectedModules() {
+	for (const auto sm : modules::selectedModules)
+	{
+		if (sm->isLoaded())
+			sm->freeLibrary();
+	}
+}
+void modules::initAllSelectedModules() {
+	for (const auto sm : modules::selectedModules)
+	{
+		if (sm->isLoaded())
+		{
+			auto initFnc = sm->getFunction<int>("ModuleInit");
+		}
+	}
 }

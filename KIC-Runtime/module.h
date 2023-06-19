@@ -1,18 +1,16 @@
 #pragma once
 
-#include "iWin.h"
+
 #include <functional>
 #include <string>
 #include <filesystem>
 #include <assert.h>
 
-namespace fs = std::filesystem;
 
-template <typename T>
-using fncptr = void(__stdcall*)(T*);
+#include "iWin.h"
 
 namespace modules {
-	
+
 	const enum class Flag : uint8_t
 	{
 		None = 0,
@@ -23,46 +21,28 @@ namespace modules {
 		// Add more flags as needed
 	};
 
-	Flag operator|(Flag lhs, Flag rhs) {
-		return static_cast<Flag>(static_cast<uint8_t>(lhs) | static_cast<uint8_t>(rhs));
-	}
+	Flag operator|(Flag lhs, Flag rhs);
 
-	Flag operator&(Flag lhs, Flag rhs) {
-		return static_cast<Flag>(static_cast<uint8_t>(lhs) & static_cast<uint8_t>(rhs));
-	}
+	Flag operator&(Flag lhs, Flag rhs);
 
-	Flag operator^(Flag lhs, Flag rhs) {
-		return static_cast<Flag>(static_cast<uint8_t>(lhs) ^ static_cast<uint8_t>(rhs));
-	}
+	Flag operator^(Flag lhs, Flag rhs);
 
-	bool operator==(Flag lhs, Flag rhs) {
-		return static_cast<uint8_t>(lhs) == static_cast<uint8_t>(rhs);
-	}
+	bool operator==(Flag lhs, Flag rhs);
 
-	bool operator!=(Flag lhs, Flag rhs) {
-		return static_cast<uint8_t>(lhs) != static_cast<uint8_t>(rhs);
-	}
+	bool operator!=(Flag lhs, Flag rhs);
 
-	Flag operator~(Flag lhs) {
-		return static_cast<Flag>(~static_cast<uint8_t>(lhs));
-	}
+	Flag operator~(Flag lhs);
 
-	Flag createFlag(uint8_t value) {
-		return static_cast<Flag>(value);
-	}
+	Flag createFlag(uint8_t value);
 
-	bool hasFlag(Flag flag,const Flag checkFlag) {
-		return (flag & checkFlag) == checkFlag;
-	}
+	bool hasFlag(Flag flag, const Flag checkFlag);
 
-	void setFlag(Flag& flag, Flag setFlag) {
-		flag = flag | setFlag;
-	}
+	void setFlag(Flag& flag, Flag setFlag);
 
-	void clearFlag(Flag& flag,const Flag clearFlag) {
-		flag = flag & ~clearFlag;
-	}
+	void clearFlag(Flag& flag, const Flag clearFlag);
 }
+
+namespace fs = std::filesystem;
 
 class Module
 {
@@ -71,7 +51,6 @@ public:
 	Module(const std::string& libPath, const std::string& alias = "")
 		: s_libPath(libPath), s_alias(alias)
 	{
-		h_Module = nullptr;
 		m_flag = modules::Flag::None;
 	}
 
@@ -86,9 +65,6 @@ public:
 	bool freeLibrary();
 
 	bool reloadLibrary();
-
-	template <typename T>
-	fncptr<T> getFunction(const char* functionName);
 
 	std::string getAlias() const { return s_alias; }
 
@@ -107,45 +83,29 @@ public:
 	const std::string& getPath() const 
 	{ return s_libPath; }
 private:
-
+	template <typename T>
+	std::function<void()> getFunction(const char* functionName);
 protected:
 
 
 	/***** Members *****/
 public:
-
+	std::unordered_map<std::string, u64> p_functionNames;
+	std::vector<std::function<void()>*> p_functionPtrs;
 private:
 	modules::Flag m_flag = modules::createFlag(0);
-protected:
-	HMODULE h_Module;  // Handle to the DLL
+	HMODULE h_Module = nullptr;  // Handle to the DLL
 	std::string s_libPath; // Path of the DLL
 	std::string s_alias; // Alias of the library
-
+	
+	
+	std::unordered_map<std::string, u64> p_functionNames;
+	std::vector<std::function<void()>*> p_functionPtrs;
 };
 
 namespace modules {
 	std::vector<Module*> selectedModules;
-	void LoadAllSelectedModules() {
-		for (const auto sm : selectedModules)
-		{
-			if (!sm->isLoaded())
-				sm->loadLibrary();
-		}
-	}
-	void freeAllSelectedModules() {
-		for (const auto sm : selectedModules)
-		{
-			if (sm->isLoaded())
-				sm->freeLibrary();
-		}
-	}
-	void initAllSelectedModules() {
-		for (const auto sm : selectedModules)
-		{
-			if (sm->isLoaded())
-			{
-				auto initFnc = sm->getFunction<int>("ModuleInit");
-			}
-		}
-	}
+	void LoadAllSelectedModules();
+	void freeAllSelectedModules();
+	void initAllSelectedModules();
 }

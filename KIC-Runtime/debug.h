@@ -1,19 +1,8 @@
 #pragma once
 
-#include "iWin.h"
-#include <codecvt>
-#include <locale>
-#include <string>
-
-ifDebug(
-	HANDLE console = nullptr;
-)
-
-ifDebug(
-	int conOut(std::string msg) {
-	if (console != nullptr) {
-		DWORD written;
-		return WriteConsoleA(console, msg.c_str(), static_cast<DWORD>(msg.length()), &written, nullptr);
-	}
-}
-)
+// Debug defines
+#ifdef _DEBUG
+#	define ifDebug(code) code
+#else
+#	define ifDebug(code)
+#endif // _DEBUG

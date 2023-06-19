@@ -12,7 +12,6 @@
 
 // Includes
 #include "iWin.h"
-#include "debug.h"
 #include "WindowBoxes.h"
 
 
@@ -43,8 +42,6 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
 		if (wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN)
 		{
 			// Display key ID and device ID
-			ifDebug(conOut("Key ID: " + std::to_string((uint32_t)keyboardStruct->vkCode) + "\n"));
-			ifDebug(conOut("Device ID: " + std::to_string((uintptr_t)deviceHandle) + "\n"));
 		}
 	}
 
@@ -61,7 +58,6 @@ void RegisterRawInputDevices(HWND hwnd)
 
 	if (!RegisterRawInputDevices(&rawInputDevice, 1, sizeof(rawInputDevice)))
 	{
-		ifDebug(conOut("Failed to register raw input devices!\n"));
 		ErrorBox("Failed to register raw input devices!\n");
 	}
 }
@@ -95,12 +91,6 @@ int WINAPI WinMain(
 	LPSTR     lpCmdLine,
 	int       nShowCmd )
 {
-	ifDebug(
-		AllocConsole();
-		console = GetStdHandle(STD_OUTPUT_HANDLE);
-		SetConsoleTextAttribute(console, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-	)
-
 	// Create a hidden window to receive raw input messages
 	WNDCLASS wndClass;
 	wndClass.style = 0;
@@ -114,17 +104,15 @@ int WINAPI WinMain(
 	wndClass.lpszMenuName = NULL;
 	wndClass.lpszClassName = L"HiddenWindowClass";
 
-	ATOM atom = RegisterClass(&wndClass);
+	ATOM atom = RegisterClassW(&wndClass);
 	if (atom == 0)
 	{
-		ifDebug(conOut("Failed to register window class!\n"));
 		return 1;
 	}
 
 	HWND hiddenWindow = CreateWindowEx(0, wndClass.lpszClassName, NULL, 0, 0, 0, 0, 0, HWND_MESSAGE, NULL, NULL, NULL);
 	if (hiddenWindow == NULL)
 	{
-		ifDebug(conOut("Failed to create hidden window!\n"));
 		return 1;
 	}
 
@@ -133,7 +121,6 @@ int WINAPI WinMain(
 	keyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, GetModuleHandle(NULL), 0);
 	if (keyboardHook == NULL)
 	{
-		ifDebug(conOut("Failed to install keyboard hook!\n"));
 		return 1;
 	}
 
