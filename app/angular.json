@@ -28,6 +28,7 @@
             "inlineStyleLanguage": "less",
             "assets": [
               "src/favicon.ico",
+              "src/.htaccess",
               "src/assets"
             ],
             "styles": [
@@ -109,6 +110,6 @@
   },
   "defaultProject": "app",
   "cli": {
-    "analytics": "3d7d2993-9f30-4365-aca9-b5e2b3a6b614"
+    "analytics": false
   }
 }

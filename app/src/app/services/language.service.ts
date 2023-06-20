@@ -2,6 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 
+import { FileService } from './file.service';
 import { supportedLanguages, ILanguages, defaultLanguage } from '../models/supportedLanguages.model';
 
 @Injectable({
@@ -10,6 +11,8 @@ import { supportedLanguages, ILanguages, defaultLanguage } from '../models/suppo
 export class LanguageService {
   protected activeLanguageSubject : BehaviorSubject<string>;
   public languageChanged = new EventEmitter<void>();
+
+  public fileService = new FileService()
 
   private translations       : { [key: string]: any } = {};
   private language           : ILanguages[0] = defaultLanguage;
@@ -25,6 +28,7 @@ export class LanguageService {
     this.activeLanguageSubject = new BehaviorSubject<string>(this.getLanguage());
     // Laden der Übersetzungsdateien
     this.loadTranslations();
+    console.info("constructor of LanguageService")
   }
   
   // * functions ****************************************************
@@ -32,8 +36,9 @@ export class LanguageService {
     //! Annahme: Die JSON-Dateien sind im geforderten Ordner und haben entsprechende Namen
     supportedLanguages.forEach(lang => {
       // Laden der Übersetzungsdatei
+      //! nicht Runtime
       const translation = require(`src/assets/lang/${lang}.json`);
-      //import translation from 'src/assets/lang/${lang}.json';
+      console.info(translation)
       this.translations[lang] = translation;
     });
   }
@@ -41,12 +46,15 @@ export class LanguageService {
   public changeLanguage(language: string) {
     // Überprüfung, ob die Sprache unterstützt wird
     if (this.supportedLanguages.includes(language)) {
-      this.language = language;
-      // Auslösen des languageChanged-Ereignisses
-      this.languageChanged.emit();
+      this.language = language
     } else {
+      this.language = defaultLanguage
       console.error('Unsupported language:', language);
+      console.warn('Change to default language:', defaultLanguage);
     }
+    // Speichern der Spracheinstellung im Local Storage (falls erforderlich)
+    localStorage.setItem('language', this.language);
+    this.languageChanged.emit();
   }
 
   public getTranslation(path: string): string {
@@ -72,15 +80,6 @@ export class LanguageService {
     // Return the original key if translation is missing for the selected language
     return path;
   }
-  
-  //! Not for nested obj
-  // public getTranslation(key: string): string {
-  //   const translation = this.translations[this.language];
-  //   if (translation && translation[key]) {
-  //     return translation[key];
-  //   }
-  //   return key;
-  // }
   // Alias für getTranslation
   public get(key: string): string {
     return this.getTranslation(key);
@@ -89,39 +88,8 @@ export class LanguageService {
   private getLanguage(): string {
     // Auslesen der Spracheinstellung aus dem Local Storage
     // Standardwert falls keine Spracheinstellung vorhanden ist
-    this.language = localStorage.getItem('language') || defaultLanguage;
-    // Speichern der Spracheinstellung im Local Storage (falls erforderlich)
-    localStorage.setItem('language', this.language);
+    const localStorageLanguage = localStorage.getItem('language') || "defaultLanguage";
+    this.changeLanguage(localStorageLanguage)
     return this.language;
   }
 }
-
-// @Injectable()
-// export class languageService {
-
-//   protected activeLanguageSubject: BehaviorSubject<any>;
-//   public languageChanged = new EventEmitter<object>();
-  
-//   protected language = localStorage.getItem("language")
-  
-//   public get themeObservable(): Observable<ILanguages> {
-//     return this.activeLanguageSubject.asObservable();
-//   }
-
-//   constructor() {
-//     this.activeLanguageSubject = new BehaviorSubject<any>(this.getLanguage());
-//   }
-
-//   public changeLanguage(language:ILanguages){
-//     this.language = language
-//     this.languageChanged.emit()
-//   }
-  
-//   private getLanguage() {
-//     this.language = localStorage.getItem("language") ? localStorage.getItem("language") : 'en'
-//     localStorage.setItem("language",this.language? this.language : "en")
-//     return this.language;
-//   }
-// }
-
-

@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Regel 1: Weiterleitung auf index.html
+  # RewriteRule ^index\.html$ - [L]
+
+  # Regel 2: Weiterleitung auf index.html für nicht vorhandene Pfade
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+
+  # Regel 3: Passwortgeschützter Bereich
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{HTTP:Authorization} ^$
+  RewriteRule ^ - [L,R=401]
+
+</IfModule>
+  
+AuthType Basic
+AuthName "Geschützter Bereich"
+AuthUserFile ./.htpasswd
+Require valid-user

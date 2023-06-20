@@ -3,15 +3,6 @@
       "en":"Englisch",
       "de":"German"
     },
-    "greeting": {
-      "title": "Welcome",
-      "message": "Hello, how can I assist you?"
-    },
-    "navigation": {
-      "home": "Home",
-      "about": "About",
-      "contact": "Contact"
-    },
     "pages":{
         "home":{
             "text":"text"

@@ -6,7 +6,7 @@ import { LanguageService } from 'src/app/services/language.service';
 
 
 @Component({
-  selector    : 'error-page-component',
+  selector    : 'ErrorPageComponent',
   templateUrl : './error.page.component.html',    // TODO turn it in to ng Materials >> make it pretty 
   styleUrls   : ['./error.page.component.less'],
   host        : { class: 'error-page-component' }

@@ -4,7 +4,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 
 @Component({
-  selector    : 'app-component',
+  selector    : 'AppComponent',
   templateUrl : './app.component.html',
   styleUrls   : ['./app.component.less']
 })
