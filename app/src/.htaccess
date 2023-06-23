@@ -11,14 +11,14 @@
   RewriteRule ^ index.html [L]
 
   # Regel 3: Passwortgeschützter Bereich
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteCond %{HTTP:Authorization} ^$
-  RewriteRule ^ - [L,R=401]
+  # RewriteCond %{REQUEST_FILENAME} -f [OR]
+  # RewriteCond %{REQUEST_FILENAME} -d
+  # RewriteCond %{HTTP:Authorization} ^$
+  # RewriteRule ^ - [L,R=401]
 
 </IfModule>
   
-AuthType Basic
-AuthName "Geschützter Bereich"
-AuthUserFile ./.htpasswd
-Require valid-user
+# AuthType Basic
+# AuthName "Geschützter Bereich"
+# AuthUserFile ./.htpasswd
+# Require valid-user

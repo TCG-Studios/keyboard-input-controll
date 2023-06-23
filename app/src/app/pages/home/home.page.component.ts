@@ -5,7 +5,7 @@ import { Router } from '@angular/router'
   selector    : 'HomePageComponent',
   templateUrl : './home.page.component.html',
   styleUrls   : ['./home.page.component.less'],
-  host        : { class: 'home.page.component' }
+  host        : { class: 'HomePageComponent' }
 })
 export class HomePageComponent {
 

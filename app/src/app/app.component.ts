@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 //import { ThemeService } from './services/theme.service';
 
@@ -6,16 +6,17 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 @Component({
   selector    : 'AppComponent',
   templateUrl : './app.component.html',
-  styleUrls   : ['./app.component.less']
+  styleUrls   : ['./app.component.less'],
+  host        : { class: 'AppComponent' }
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'app';
   //currentTheme = this.themeService.getTheme()
 
   //* Constructor ***************************************************
   constructor(
     //public themeService: ThemeService,
-    public cdRef:ChangeDetectorRef,
+    // public cdRef = ChangeDetectorRef; // FIXME ChangeDetectorRef
   ){
   }
 
@@ -30,7 +31,7 @@ export class AppComponent implements OnInit {
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-    this.cdRef.detectChanges()
+    // this.cdRef.detectChanges()
   }
 
   //* Functions *****************************************************
@@ -40,4 +41,8 @@ export class AppComponent implements OnInit {
   //   this.cdRef.detectChanges()
   // }
 
+
+  NavTestFunc():void {
+    console.log("test")
+  }
 }

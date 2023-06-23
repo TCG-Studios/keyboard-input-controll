@@ -31,7 +31,7 @@ const routes: Routes = [
 
   /* redirects if anything is wrong */
   { path: ''  , pathMatch: 'full', redirectTo: 'home'            },
-  //{ path: '*', pathMatch: 'full', redirectTo: '/error?code=404' },
+  { path: '*' , pathMatch: 'full', redirectTo: '/error?code=404' },
   { path: '**', pathMatch: 'full', redirectTo: '/error?code=404' },
 ];
 

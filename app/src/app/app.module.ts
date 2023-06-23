@@ -15,6 +15,8 @@ import { HomePageComponent } from './pages/home/home.page.component';
 
 /* ERROR Pages */
 import { ErrorPageComponent } from './pages/error/error.page.component';
+import { SidenavComponent } from './components/base/sidenav/sidenav.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { ErrorPageComponent } from './pages/error/error.page.component';
     /* Page Components */
     HomePageComponent,
     ErrorPageComponent,
+    SidenavComponent,
+    HeaderComponent,
   ],
   providers: [
     //* LanguageService,    << provided in root

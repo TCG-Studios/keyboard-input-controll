@@ -1,0 +1,24 @@
+:host-context(.AppComponent) {
+
+    .grid-container{
+        display: grid;
+        grid-template-areas:
+        'icon header'
+        'menu main'
+        'menu footer';
+        grid-template-columns: min-content auto;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .grid-container > div {
+        padding: 20px 0;
+    }
+
+    .gird-icon {
+        grid-area: icon;
+        :hover {
+            cursor: pointer;
+        }
+    }
+}
