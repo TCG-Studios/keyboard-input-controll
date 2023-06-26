@@ -2,6 +2,9 @@ import { NgModule         } from '@angular/core'            ;
 import { BrowserModule    } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module'     ;
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 /* Module Components */
 import { AppComponent } from './app.component';
 
@@ -12,7 +15,6 @@ import { AppMaterialModule  } from './modules/material.module' ;
 import { HeaderComponent } from './components/base/header/header.component';
 import { SidenavComponent } from './components/base/sidenav/sidenav.component';
 
-
 /* Page Components */
 import { HomePageComponent } from './pages/home/home.page.component';
 import { ErrorPageComponent } from './pages/error/error.page.component';
@@ -21,6 +23,7 @@ import { ErrorPageComponent } from './pages/error/error.page.component';
   imports: [
     /* default */
     BrowserModule,
+    BrowserAnimationsModule,
     CommonModule,
 
     /* Routing */
