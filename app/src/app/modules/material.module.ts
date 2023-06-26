@@ -33,6 +33,10 @@ import { MatGridListModule }                from "@angular/material/grid-list";
 import { MatSliderModule }                  from "@angular/material/slider";
 import { MatExpansionModule }               from '@angular/material/expansion';
 
+//New
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 @NgModule({
     exports : [
         MatIconModule,
@@ -65,8 +69,11 @@ import { MatExpansionModule }               from '@angular/material/expansion';
         MatProgressSpinnerModule,
         MatExpansionModule,
         // MatMomentDateModule,
-    ],
 
+        //New
+        MatToolbarModule,
+        MatSidenavModule,
+    ],
     providers: [
         MatIconRegistry,
     ],

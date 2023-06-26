@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 // import {AppResolver} from './app.resolver';
 
-/* TEST Components */
-// import { TestComponent_JWT } from './pages/tests/jwt.component';
-
 /* Page Components */
 import { HomePageComponent } from './pages/home/home.page.component';
 
 /* ERROR Page */
 import { ErrorPageComponent } from './pages/error/error.page.component';
+
+/* TEST Components */
+import { SidenavComponent } from './components/base/sidenav/sidenav.component';
 
 const routes: Routes = [
   /* redirects as alias (or pages that are N/A at the Moment) */
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path : 'lession/module_components', pathMatch: 'full',redirectTo: '/error?code=501&source=\/lession\/module_components' },
 
   /* Routs to Test Pages */
-  // { path: 'test/jwt', component: TestComponent_JWT },
+  { path: 'test/nav', component: SidenavComponent },
 
   /* Routs to Main Pages */
   { path: 'home', component: HomePageComponent },

@@ -1,7 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
 //import { ThemeService } from './services/theme.service';
-
 
 @Component({
   selector    : 'AppComponent',
@@ -15,6 +14,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   //* Constructor ***************************************************
   constructor(
+    public router: Router
     //public themeService: ThemeService,
     // public cdRef = ChangeDetectorRef; // FIXME ChangeDetectorRef
   ){
@@ -40,9 +40,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   //   // Trigger Change Detection to update other components
   //   this.cdRef.detectChanges()
   // }
+  public navigate(event: Event, path: string,): void {
+    event.preventDefault();
 
+    this.router
+      .navigate([path])
+      .then();
+  }
 
-  NavTestFunc():void {
+  public NavTestFunc():void {
     console.log("test")
+    
   }
 }
