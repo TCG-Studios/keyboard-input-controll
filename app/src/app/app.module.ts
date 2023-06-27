@@ -17,7 +17,9 @@ import { SidenavComponent } from './components/base/sidenav/sidenav.component';
 
 /* Page Components */
 import { HomePageComponent } from './pages/home/home.page.component';
+import { SettingsPageComponent } from './pages/settings/settings.component';
 import { ErrorPageComponent } from './pages/error/error.page.component';
+import { WSPageComponent } from './pages/dev/wspage/wspage.component';
 
 @NgModule({
   imports: [
@@ -44,7 +46,9 @@ import { ErrorPageComponent } from './pages/error/error.page.component';
 
     /* Page Components */
     HomePageComponent,
+    SettingsPageComponent,
     ErrorPageComponent,
+    WSPageComponent,
   ],
   providers: [
     //* some services are provided in root directly

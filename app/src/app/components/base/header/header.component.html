@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button (click)="toggleNav()">
+    <button  mat-mini-fab color="primary" (click)="toggleNav()">
         <mat-icon>menu</mat-icon>
     </button>
-    <span class="titel">
+    <span class="titel" (click)="navigate($event, 'home')">
         <img src="./../favicon.ico">
         KIC
     </span>

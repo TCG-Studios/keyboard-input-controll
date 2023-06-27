@@ -1,3 +1,34 @@
 :host-context(.HomePageComponent) {
+    width: 100%;
+    height: 100%;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // flex-direction: column;
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 75vh; //FIXME
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 150px;
+            // max-height: 100%;
+        }
+    }
+
+    div.icon {
+        height: 75%;
+    }
+
+    img.watermark {
+        // width: 75%;
+        height: 100%;
+        mix-blend-mode: difference;
+    }
 
 }
