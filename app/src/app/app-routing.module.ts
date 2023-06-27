@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 /* Page Components */
 import { HomePageComponent } from './pages/home/home.page.component';
-import { SettingsPageComponent } from './pages/settings/settings.component';
+import { SettingsPageComponent } from './pages/settings/settings.page.component';
 
 /* ERROR Page */
 import { ErrorPageComponent } from './pages/error/error.page.component';
