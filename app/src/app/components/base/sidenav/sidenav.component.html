@@ -1,16 +1,28 @@
-<mat-drawer-container autosize class="example-container">
-    <mat-drawer #drawer class="example-sidenav" mode="side" opened="true">
-      <p>Auto-resizing sidenav</p>
+<mat-sidenav-container autosize class="container">
+    <mat-sidenav #sidenav class="sidenav" mode="over" opened="false">
+      <!-- <p>Auto-resizing sidenav</p>
       <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
       <button (click)="showFiller = !showFiller" mat-raised-button>
         Toggle extra text
-      </button>
-    </mat-drawer>
+      </button> -->
+      <mat-nav-list >
+      <ng-container *ngFor="let itemGroup of sidenavItems; let isLastGroup = last">
+        <a mat-list-item *ngFor="let item of itemGroup" [routerLink]="item.link" routerLinkActive="active">
+          <div class="sidenav-fixpos">
+            <mat-icon>{{ item.icon }}</mat-icon>
+            <span>{{lang.get(item.label)}}</span>
+          </div>
+        </a>
+        <mat-divider *ngIf="!isLastGroup"></mat-divider>
+      </ng-container>
+    </mat-nav-list>
+    </mat-sidenav>
   
-    <mat-drawer-content class="example-sidenav-content">
-      <button type="button" mat-button (click)="drawer.toggle()">
+    <mat-sidenav-content class="sidenav-content full-viewport">
+      <!-- <button type="button" mat-button (click)="sidenav.toggle()">
         Toggle sidenav
-      </button>
-    </mat-drawer-content>
-</mat-drawer-container>
+      </button> -->
+      <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>
   

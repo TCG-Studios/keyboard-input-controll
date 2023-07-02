@@ -16,13 +16,14 @@ import { WSPageComponent  } from './pages/dev/wspage/wspage.component'        ;
 
 const routes: Routes = [
   /* redirects as alias (or pages that are N/A at the Moment) */
-  { path : 'cfg'                      , pathMatch: 'full',redirectTo: '/error?code=501&source=\/cfg'                        },
+  // { path : 'cfg'                      , pathMatch: 'full',redirectTo: '/error?code=501&source=\/cfg'                        },
   { path : 'impressum'                , pathMatch: 'full',redirectTo: '/error?code=501&source=\/impressum'                  },
-  { path : 'dev/home'                 , pathMatch: 'full',redirectTo: '/error?code=423&source=\/dev\/home'                  },
-
+  
   /* Routs to Test Pages */
-  { path: 'test/nav', component: SidenavComponent },
-  { path: 'dev/ws'  , component: WSPageComponent  },
+  { path : 'dev'      , pathMatch: 'full',redirectTo       : '/error?code=501' },
+  { path : 'dev/home' , pathMatch: 'full',redirectTo       : '/error?code=501' },
+  { path : 'dev/nav'  , component:        SidenavComponent                     },
+  { path : 'dev/ws'   , component:        WSPageComponent                      },
 
   /* Routs to Main Pages */
   { path : 'home'    , component: HomePageComponent     },
@@ -32,10 +33,11 @@ const routes: Routes = [
   { path: 'error', component: ErrorPageComponent },
 
   /* redirects if anything is wrong */
-  { path: ''  , pathMatch: 'full', redirectTo: 'home'            },
-  { path: '*' , pathMatch: 'full', redirectTo: '/error?code=404' },
-  { path: '**', pathMatch: 'full', redirectTo: '/error?code=404' },
-];
+  { path : ''    , pathMatch: 'full', redirectTo: '/home'           },
+  { path : 'WIP' , pathMatch: 'full', redirectTo: '/error?code=501' },
+  { path : '*'   , pathMatch: 'full', redirectTo: '/error?code=404' },
+  { path : '**'  , pathMatch: 'full', redirectTo: '/error?code=404' },
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

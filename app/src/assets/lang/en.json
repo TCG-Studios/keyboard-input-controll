@@ -3,14 +3,14 @@
     "en":"Englisch",
     "de":"German"
   },
-  "greeting": {
-    "title": "Welcome",
-    "message": "Hello, how can I assist you?"
-  },
   "navigation": {
     "home": "Home",
+    "modules": "Modules",
+    "mapping": "Mapping",
+    "settings": "Settings",
+    "stats": "Statistics",
     "about": "About",
-    "contact": "Contact"
+    "help": "Help"
   },
   "pages":{
       "home":{

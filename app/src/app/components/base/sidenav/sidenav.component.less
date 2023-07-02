@@ -1,18 +1,28 @@
 :host-context(.SidenavComponent) {
-    .example-container {
-        width: 500px;
-        height: 300px;
-        border: 1px solid rgba(0, 0, 0, 0.5);
+    .container {
+        // width: 98vw;
+        height: 92vh;
+        // border: 1px solid rgba(0, 0, 0, 0.5);
     }
     
-    .example-sidenav {
+    .sidenav {
         padding: 20px;
     }
 
-    .example-sidenav-content {
+    .sidenav-content {
         display: flex;
+        flex-direction: column;
         height: 100%;
         align-items: center;
         justify-content: center;
+    }
+
+    .sidenav-fixpos {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
     }
 }

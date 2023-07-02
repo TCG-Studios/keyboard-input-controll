@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { EventService } from 'src/app/services/event.service';
+
 @Component({
   selector    : 'HeaderComponent',
   templateUrl : './header.component.html',
@@ -10,7 +12,8 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
 
   constructor(
-    public router: Router
+    public router: Router,
+    private eventService: EventService,
   ){
   }
 
@@ -23,6 +26,6 @@ export class HeaderComponent {
   }
 
   toggleNav(){
-    console.info("toggle nav")
+    this.eventService.emitButtonClick();  // TODO adjustment when service changes (see service TODO)
   }
 }
