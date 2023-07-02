@@ -4,18 +4,23 @@ Or for short KIC, is an Project wich still in WIP an so it's Documentation and s
 
 ## Authors
 
-- [@TechCrafterGaming](https://github.com/TechCrafterGaming)
-  - Owner and Head of this Project
-  - GUI
-- [@noffie](https://github.com/Knoficooki)
-  - Backend
+- <details open>
 
+  [<summary>@TechCrafterGaming](https://github.com/TechCrafterGaming)</summary>
+  Owner and Head of this Project \
+  Responsible for ```Frontend (GUI)``` 
+  </details>
+- <details open>
 
+  [<summary>@noffie](https://github.com/Knoficooki)</summary>
+  Responsible for ```Backend```
+  </details>
 ---
 
 ## KIC Overview
 
-  - Docs WIP
+  - The Idea
+  - Feature List
 
   - [GUI](./app/README.md) (WIP)
     -
@@ -46,3 +51,20 @@ Or for short KIC, is an Project wich still in WIP an so it's Documentation and s
   - BACKEND (WIP)
     -
     - WIP
+
+---
+
+## The Idea
+
+I, [@TechCrafterGaming](https://github.com/TechCrafterGaming), had the program or rather a program that ran from several parts of code. \
+This "program" had a simple purpose and that was that you could have the possibility to control a variety of functions via a second keyboard.
+You should not be limited to the simple keys but you should be able to create a kind of profiles to create an infinite number of keys or hotkeys.
+The original "program" consisted of a mix from ```lua```, ```autoit```, ```batch``` and ```autohotkey (AHK)```.
+
+And now the idea was to make a better Programm out of the shit that already was there.
+This time with a nice looking GUI that is capable to run on other Devices as the host PC.
+
+## Feature List
+
+WIP
+

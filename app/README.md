@@ -15,8 +15,18 @@ Further it is embedded in to electron to create a desktop APP
   -
   - <details>
 
+    [<summary>TODO's](#todo)</summary>
+    This is a quick idea of what is still todo.
+
+    - [Features](#todo_features)
+    - [Performance](#todo_performance)
+    - [Optics](#todo_look)
+    
+    </details>
+  - <details>
+
     [<summary>ELECTRON](#electron)</summary>
-    This is a quick rundown on the Electron Framework
+    This is a quick rundown on the Electron Framework.
 
     - [Build](#electron_build)
     - [Run](#electron_run)
@@ -26,7 +36,7 @@ Further it is embedded in to electron to create a desktop APP
   - <details>
 
     [<summary>ANGULAR](#angular)</summary>
-    This is a quick rundown on the Angular Framework
+    This is a quick rundown on the Angular Framework.
 
     - [Build](#angular_build)
     - [Running unit tests](#angular_tests)
@@ -34,6 +44,34 @@ Further it is embedded in to electron to create a desktop APP
     - [Further help](#angular_help)
     
     </details>
+
+---
+
+## TODO / Roadmap
+
+
+### <a id="todo_features">Features
+* Hotkeys
+  * 
+* Websocket
+  * dev tool
+  * service for app
+* Settings
+  * most of the basic app settings
+  * Module settings (modular)
+  * Modul create
+* Other
+  * Themes
+  * lang
+  * Router Guards and Resolver
+  * address all TODO's in code
+
+### <a id="todo_performance">Performance
+* IMG loading (NgOptimizedImage)
+
+### <a id="todo_look">Optics
+* Error page
+* 
 
 ---
 
